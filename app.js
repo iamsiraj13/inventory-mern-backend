@@ -47,8 +47,8 @@ mongoose.connect(URI, (error) => {
 app.use("/api", router);
 
 // Undefined Route Implement
-app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+// });
 
 module.exports = app;
