@@ -13,36 +13,44 @@ const {
   UserVerifyOtpService,
 } = require("../../services/user/UserVerifyOtpService");
 
+// user registration
+
 exports.Registration = async (req, res) => {
   const result = await UserCreateService(req, UserModel);
   res.status(200).json(result);
 };
 
+//user login
 exports.Login = async (req, res) => {
   const result = await UserLoginService(req, UserModel);
   res.status(200).json(result);
 };
 
+// user profile update
 exports.ProfileUpdate = async (req, res) => {
   const result = await UserUpdateService(req, UserModel);
   res.status(200).json(result);
 };
+// user profile details
 exports.ProfileDetails = async (req, res) => {
   const result = await UserDetailsService(req, UserModel);
   res.status(200).json(result);
 };
 
+// user email verify
 exports.RecoverVerifyEmail = async (req, res) => {
   const result = await UserVerifyEmailService(req, UserModel);
   res.status(200).json(result);
 };
 
+// user otp verify
 exports.RecoverVerifyOtp = async (req, res) => {
   const result = await UserVerifyOtpService(req, OTPModel);
 
   res.status(200).json(result);
 };
 
+// user password reset
 exports.ResetPassword = async (req, res) => {
   try {
     const { email, OTP, newpass } = req.body;

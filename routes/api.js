@@ -12,6 +12,20 @@ const {
   CategoryDropdown,
   CategoryDetail,
 } = require("../controllers/Category/CategoryController");
+const {
+  CreateCustomers,
+  UpdateCustomers,
+  CustomersList,
+  CustomersDropDown,
+  CustomersDetailsByID,
+} = require("../controllers/Customers/CustomersController");
+const {
+  CreateSuppliers,
+  UpdateSuppliers,
+  SuppliersList,
+  SuppliersDropDown,
+  SuppliersDetailsByID,
+} = require("../controllers/Supplier/SupplierController");
 const router = express.Router();
 const {
   Registration,
@@ -50,5 +64,34 @@ router.get(
 );
 router.get("/categoryDropdown", AuthVerify, CategoryDropdown);
 router.get("/categoryDetail/:id", AuthVerify, CategoryDetail);
+
+// Customers
+router.post("/CreateCustomers", AuthVerify, CreateCustomers);
+router.post("/UpdateCustomers/:id", AuthVerify, UpdateCustomers);
+router.get(
+  "/CustomersList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  CustomersList
+);
+router.get("/CustomersDropDown", AuthVerify, CustomersDropDown);
+// router.get("/DeleteCustomer/:id", AuthVerify, DeleteCustomer);
+router.get("/CustomersDetailsByID/:id", AuthVerify, CustomersDetailsByID);
+
+// Suppliers
+router.post("/createSuppliers", AuthVerify, CreateSuppliers);
+router.post("/updateSuppliers/:id", AuthVerify, UpdateSuppliers);
+router.get(
+  "/suppliersList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  SuppliersList
+);
+router.get("/suppliersDropDown", AuthVerify, SuppliersDropDown);
+// router.get(
+//   "/DeleteSupplier/:id",
+//   AuthVerify,
+//   DeleteSupplier
+// );
+
+router.get("/SuppliersDetailsByID/:id", AuthVerify, SuppliersDetailsByID);
 
 module.exports = router;

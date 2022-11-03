@@ -6,7 +6,7 @@ const CreateService = async (Request, DataModel) => {
     const data = await DataModel.create(Postbody);
     return { status: "success", data: data };
   } catch (error) {
-    return { status: "fail", data: error.toString() };
+    return { status: "fail", data: error };
   }
 };
 
