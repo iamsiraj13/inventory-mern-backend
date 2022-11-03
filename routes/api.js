@@ -20,6 +20,26 @@ const {
   CustomersDetailsByID,
 } = require("../controllers/Customers/CustomersController");
 const {
+  CreateExpenses,
+  UpdateExpenses,
+  ExpensesList,
+  ExpenseDetailsByID,
+} = require("../controllers/Expense/ExpenseController");
+const {
+  CreateExpenseTypes,
+  UpdateExpenseTypes,
+  ExpenseTypesList,
+  ExpenseTypesDropDown,
+  ExpenseTypesDetailsByID,
+} = require("../controllers/Expense/ExpenseTypesController");
+const {
+  ProductsDropDown,
+  ProductsDetailsByID,
+  ProductsList,
+  UpdateProducts,
+  CreateProducts,
+} = require("../controllers/Products/ProductsController");
+const {
   CreateSuppliers,
   UpdateSuppliers,
   SuppliersList,
@@ -93,5 +113,40 @@ router.get("/suppliersDropDown", AuthVerify, SuppliersDropDown);
 // );
 
 router.get("/SuppliersDetailsByID/:id", AuthVerify, SuppliersDetailsByID);
+
+// ExpenseTypes
+router.post("/CreateExpenseTypes", AuthVerify, CreateExpenseTypes);
+router.post("/UpdateExpenseTypes/:id", AuthVerify, UpdateExpenseTypes);
+router.get(
+  "/ExpenseTypesList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  ExpenseTypesList
+);
+router.get("/ExpenseTypesDropDown", AuthVerify, ExpenseTypesDropDown);
+// router.get("/DeleteExpenseTypes/:id", AuthVerify, DeleteExpenseTypes);
+router.get("/ExpenseTypesDetailsByID/:id", AuthVerify, ExpenseTypesDetailsByID);
+
+// Expenses
+router.post("/CreateExpenses", AuthVerify, CreateExpenses);
+router.post("/UpdateExpenses/:id", AuthVerify, UpdateExpenses);
+router.get(
+  "/ExpensesList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  ExpensesList
+);
+// router.get("/DeleteExpense/:id",AuthVerify,DeleteExpense);
+router.get("/ExpenseDetailsByID/:id", AuthVerify, ExpenseDetailsByID);
+
+// Products
+router.post("/CreateProducts", AuthVerify, CreateProducts);
+router.post("/UpdateProducts/:id", AuthVerify, UpdateProducts);
+router.get(
+  "/ProductsList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  ProductsList
+);
+// router.get("/DeleteProduct/:id",AuthVerify,DeleteProduct);
+router.get("/ProductsDetailsByID/:id", AuthVerify, ProductsDetailsByID);
+router.get("/ProductsDropDown", AuthVerify, ProductsDropDown);
 
 module.exports = router;
