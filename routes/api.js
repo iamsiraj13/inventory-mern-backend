@@ -40,6 +40,21 @@ const {
   CreateProducts,
 } = require("../controllers/Products/ProductsController");
 const {
+  PurchasesDelete,
+  PurchasesList,
+  CreatePurchases,
+} = require("../controllers/Purchase/PurchaseController");
+const {
+  ReturnDelete,
+  ReturnsList,
+  CreateReturns,
+} = require("../controllers/Returns/ReturnsController");
+const {
+  SaleDelete,
+  SalesList,
+  CreateSales,
+} = require("../controllers/Sales/SalesController");
+const {
   CreateSuppliers,
   UpdateSuppliers,
   SuppliersList,
@@ -57,7 +72,6 @@ const {
   ResetPassword,
 } = require("../controllers/Users/UsersController");
 const AuthVerify = require("../middlewares/AuthVerify");
-const BrandsModel = require("../models/Brands/BrandModel");
 
 // users profile
 router.post("/registration", Registration);
@@ -148,5 +162,34 @@ router.get(
 // router.get("/DeleteProduct/:id",AuthVerify,DeleteProduct);
 router.get("/ProductsDetailsByID/:id", AuthVerify, ProductsDetailsByID);
 router.get("/ProductsDropDown", AuthVerify, ProductsDropDown);
+
+//Purchases
+router.post("/CreatePurchases", AuthVerify, CreatePurchases);
+router.get(
+  "/PurchasesList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  PurchasesList
+);
+router.get("/PurchasesDelete/:id", AuthVerify, PurchasesDelete);
+
+//Sales
+router.post("/CreateSales", AuthVerify, CreateSales);
+router.get("/SalesList/:pageNo/:perPage/:searchKeyword", AuthVerify, SalesList);
+router.get("/SaleDelete/:id", AuthVerify, SaleDelete);
+
+//Return
+router.post("/CreateReturns", AuthVerify, CreateReturns);
+router.get(
+  "/ReturnsList/:pageNo/:perPage/:searchKeyword",
+  AuthVerify,
+  ReturnsList
+);
+router.get("/ReturnDelete/:id", AuthVerify, ReturnDelete);
+
+//Report
+// router.post("/ExpensesByDate", AuthVerify, ExpensesByDate);
+// router.post("/ReturnByDate", AuthVerify, ReturnByDate);
+// router.post("/PurchaseByDate", AuthVerify, PurchaseByDate);
+// router.post("/SalesByDate", AuthVerify, SalesByDate);
 
 module.exports = router;
